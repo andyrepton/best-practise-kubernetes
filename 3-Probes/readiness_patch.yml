@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: devopsdays
+  name: devopsdays
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: devopsdays
+  template:
+    metadata:
+      labels:
+        run: devopsdays
+    spec:
+      containers:
+      - image: sethkarlo/nginx:dod-second
+        name: devopsdays
+        readinessProbe:
+          httpGet:
+            path: /index.html
+            port: 80

@@ -1,0 +1,16 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: read-only-pods-deploy
+  namespace: default
+subjects:
+- kind: Group
+  name: managers
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: yvo
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role 
+  name: read-only-pods-deploy
+  apiGroup: rbac.authorization.k8s.io
